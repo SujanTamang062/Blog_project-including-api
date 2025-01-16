@@ -1,0 +1,56 @@
++---------------------------+
+|        CustomUser         |
+|---------------------------|
+| is_author: BooleanField   |
+| is_reader: BooleanField   |
++---------------------------+
+                | OneToOne (Profile.user)
+                v
++---------------------------+
+|         Profile           |
+|---------------------------|
+| user: OneToOneField       |
+| bio: TextField (optional) |
+| profile_picture: ImageField|
+| created_at: DateTimeField |
+| update_at: DateTimeField  |
++---------------------------+
+
++---------------------------+      +-------------------------+
+|         Category          |      |          Tag            |
+|---------------------------|      |-------------------------|
+| name: CharField           |      | name: CharField         |
+| slug: SlugField (unique)  |      | slug: SlugField (unique)|
+| description: TextField    |      +-------------------------+
++---------------------------+  
+                 \
+                  \
+                   ForeignKey (BlogPost.category)    
+                    \
+                     v
+      +-------------------------------------------+
+      |                BlogPost                  |
+      |-------------------------------------------|
+      | title: CharField                         |
+      | description: TextField                   |
+      | author: ForeignKey (CustomUser) <--------+
+      | created_at: DateTimeField                |
+      | updated_at: DateTimeField                |
+      | tags: ManyToManyField (Tag)              |
+      | category: ForeignKey (Category)          |
+      | is_published: BooleanField               |
+      | published_date: DateTimeField (optional) |
+      +-------------------------------------------+
+                           |
+                           | ForeignKey (Comment.post)
+                           v
+      +-------------------------------------------+
+      |                Comment                   |
+      |-------------------------------------------|
+      | user: ForeignKey (CustomUser) <----------+
+      | post: ForeignKey (BlogPost)              |
+      | content: TextField                       |
+      | created_at: DateTimeField                |
+      | parent: ForeignKey (self)                |
+      | (for nested replies)                     |
+      +-------------------------------------------+
