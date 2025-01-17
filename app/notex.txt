@@ -1,0 +1,36 @@
+1.is_author and is_reader:
+                        These fields are typically set as select options during login or profile setup. They help define the user's role, such as whether they can write posts (is_author) or only read (is_reader).
+                        Profile (Bio and Profile Picture):
+
+2.Bio and profile picture are optional.
+                        Users can provide these details, but it's not required. They allow users to personalize their profiles.
+                        Category:
+
+3.Categories 
+                        like "Tech", "Health", "Entertainment" are often predefined by the admin or server. The description gives context to the category. Categories help organize blog posts into broad groups.
+                        Tag:
+
+4.Tags 
+                        are keywords that are either written by the admin or the user. They help with searching and filtering content, making it easier to find posts on specific topics like "Python", "AI", etc.
+                        Blog Post:
+
+5.When creating a post,
+                        the title and description are written by the user. The post is associated with tags (keywords) and category (main topic). The is_published field determines whether the post is live or not.
+                        Comment:
+
+6.Users 
+                        can leave comments on blog posts. Replies can be nested under the main comment, creating a conversation thread. Each comment is linked to a specific user and post.
+
+
+// summary
+
+                         1.is_author and is_reader control user roles.
+                         2.Profile customization (bio, profile picture) is optional.
+                         3.Categories organize content into broad topics, while tags provide more specific labels.
+                         4.Blog posts are written by users, with tags and categories for organization.
+                         5.Comments allow users to interact with blog posts, including replies.
+
+
+
+
+// there is two CustomUser in them isthey are is_autho then there we should only give persisson to create a post 

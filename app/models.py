@@ -9,7 +9,7 @@ class CustomUser(AbstractUser):    #here we completely change the user so we cha
 class Profile(models.Model):   #in this section this is used to modify profile to create porfile
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)   #her models.cascade is write because if there no data exist then it delete whole data of user and it also help to minimize the debug 
     bio = models.TextField(null=True,blank=True)   #here bio is optional you can set null or blank as well
-    profile_picture = models.ImageField(upload_to='profile_pics/',blank=True)  #optional image profile ppicture ; saved in profile_pics/ folder
+    profile_picture = models.ImageField(upload_to='profile_pics/',blank=True)  #optional image profile ppicture ; saved in profile_pics/ folder  #here we should download before migation calle billoww
     created_at = models.DateTimeField(auto_now_add=True)   #auto_now_add Sets the time only when the object is created.
     update_at = models.DateTimeField(auto_now=True)   #  Sets the time when the object is created and also whenever it's updated
     
