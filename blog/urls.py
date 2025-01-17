@@ -19,9 +19,10 @@ from django.urls import path
 from app.views import home,RegisterView,LoginView,IndexView
 
 urlpatterns = [
-    path('',home.as_view([])),
-    path('login/',LoginView.as_view([])),  
-    path('register/',RegisterView.as_view([])),  
-    path('index/',IndexView.as_view([])),   
-    path('admin/', admin.site.urls),
+    path('home',home.as_view({'get':'list','post':'create'})),
+    path('home/<int:pk>/',home.as_view({'get':'retrieve','put':'update','patch':'partial_update','delete':'destory'})),
+    path('login/',LoginView.as_view({'get':'list','post':'create'})),  
+    path('register/',RegisterView.as_view({'get':'list','post':'create'})),  
+    path('index/',IndexView.as_view({'get':'list','post':'create'})),   
+    path('admin/', admin.site.urls)
 ]
