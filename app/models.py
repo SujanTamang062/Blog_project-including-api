@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser  #here i import abstractuser because there is no more field like is_author so to add like custrom user field i use abstract user
 
 # Create your models here
-class CustomUser(AbstractUser):    
+class CustomUser(AbstractUser):    #here we completely change the user so we changing the user should be keep in settings.pu as well
     is_author = models.BooleanField(default=False)
     is_reader = models.BooleanField(default=False)
 
