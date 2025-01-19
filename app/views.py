@@ -11,9 +11,10 @@ from django.contrib.auth.hashers import make_password
 from rest_framework.response import Response
 
 
-class home(ModelViewSet):
+
+class home(ModelViewSet):   #here pagination/filtering/CRUD will work
     queryset = BlogPost.objects.all()
-    serializer_class = CategorySerializers
+    serializer_class = CategorySerializers      #here i should add pagination,searching,filtering,permission
     
 class RegisterView(GenericViewSet):
     queryset = User.objects.all()
@@ -47,9 +48,9 @@ class LoginView(GenericViewSet):
         data = {'form':user_form_obj}    
         return render(request,'login.html',context=data)  
     
-class IndexView(ModelViewSet):
+class IndexView(ModelViewSet):  #here permission,login,register will work
     queryset = BlogPostSerializers
-    serializer_class = BlogPostSerializers    
+    serializer_class = BlogPostSerializers   
     
 def LogoutView(request):
     logout(request)
