@@ -1,0 +1,61 @@
++---------------------------+
+|           Home            |
+|---------------------------|
+| searching: Functionality  |
+| filteration: Functionality|
+| pagination: Functionality |
+| CRUD: Functionality       |
++---------------------------+
+
++---------------------------+
+|           Index           |
+|---------------------------|
+| login: Functionality      |
+| register: Functionality   |
+| permission: Functionality |
+|          (role-based: reader, writer)|
++---------------------------+
+
+
+
+# here when even user click on create blog , (redirect to login) ||
+# when user click on signup , after signup redirect in blog || 
+# after login then redirect to home page where user can interact with website by permission 
+                    #when user login in failed then stayed at index.html
+#CRUD should perform according to permission
+                                          # is_reader can only read a blog, check profile who write blog
+                                          # is_writer can do everythingg they want of their blog and can read everyong blog but not write
+
+
+
+
+
+
+
+
+                                          <script>
+      document.getElementById('profile-btn').addEventListener('click', function(event) {
+        event.preventDefault();
+        const dropdown = document.getElementById('profile-dropdown');
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+      });
+
+      document.getElementById('close-modal').addEventListener('click', function() {
+        document.getElementById('profile-dropdown').style.display = 'none';
+      });
+
+      document.getElementById('change-pic').addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            document.getElementById('profile-pic').src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      function logout() {
+        alert('Logged out!');
+      }
+    </script>

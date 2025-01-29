@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import CustomUser, Profile, Category, Tag, BlogPost, Comment
+from .models import Profile, Category, Tag, BlogPost, Comment
 
 # Register your models here.
-admin.site.register(CustomUser)
+
 admin.site.register(Profile)
 admin.site.register(Category)
 admin.site.register(Tag)

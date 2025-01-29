@@ -1,11 +1,12 @@
 from rest_framework import serializers
-from .models import CustomUser, Profile, Category, Tag, BlogPost, Comment
-from django.contrib.auth.models import User,Group
+from .models import  Profile, Category, Tag, BlogPost, Comment
+from django.contrib.auth.models import Group
+from django.contrib.auth.models import User
 
-class CustomUserSerializers(serializers.ModelSerializer):
-    class Meta:   #here meata is necesssary with capitalize
-        model = CustomUser    
-        fields = "__all__"   #here it inputs all field of models
+# class CustomUserSerializers(serializers.ModelSerializer):
+#     class Meta:   #here meata is necesssary with capitalize
+#         model = User    
+#         fields = "__all__"   #here it inputs all field of models
         
         
 class ProfileSerializers(serializers.ModelSerializer):
@@ -21,18 +22,19 @@ class CategorySerializers(serializers.ModelSerializer):
 class TagSerializers(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        field = '__all__'
+        fields = ['id','name']
         
 class BlogPostSerializers(serializers.ModelSerializer):
     class Meta:
         model = BlogPost
-        view = '__all__'
+        fields = '__all__'
         
         
 class CommentSerializers(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = '__all__'
+        read_only_fields = ['user']  # Make the 'user' field read-only so that it is still seen in response
         
         
 class UserSerializers(serializers.ModelSerializer):

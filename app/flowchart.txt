@@ -2,8 +2,8 @@ flwochart of model
 
 
 +---------------------------+
-|        CustomUser         |
-|---------------------------|
+|        CustomUser         |     #here user can permission accoding to user when user login if user enter "author" than user can modify their profile, edit post and can view everyone post
+|---------------------------|     #if user if just reader than user can only read of blog
 | is_author: BooleanField   |
 | is_reader: BooleanField   |
 +---------------------------+

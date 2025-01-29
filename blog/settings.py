@@ -27,18 +27,24 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
 # Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
+    'django.contrib.redirects',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
-    'rest_framework'
+    'rest_framework',
+    'rest_framework.authtoken',
+    "django_filters", # first pip installing then it is necessary for filtering logic
+    
 ]
 
 MIDDLEWARE = [
@@ -88,11 +94,11 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "Project_Blog",
-        "USER": "postgres",
-        "PASSWORD": "sujan@789",
+        'USER': 'postgres',
+        'PASSWORD': 'sujan@789',
         "HOST": "localhost",
         "PORT": "5432",
-    }
+    },
 }
 
 # Password validation
@@ -136,4 +142,21 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'app.CustomUser'
+
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES' : ['rest_framework.authentication.TokenAuthentication'],
+    'DEFAULT_PERMISSION_CLASSES':[
+        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.DjangoModelPermissions'
+    ],
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend", "rest_framework.filters.SearchFilter","rest_framework.filters.OrderingFilter"],
+    
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 2   #you can enter any value which means (it shows two data of table in each page)
+    
+    
+}
+
+
