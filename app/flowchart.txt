@@ -57,3 +57,9 @@ flwochart of model
       | parent: ForeignKey (self)                |
       | (for nested replies)                     |
       +-------------------------------------------+
+
+
+
+      http://127.0.0.1:8000/home/?id=15    // filtering 
+
+      http://127.0.0.1:8000/home/?search=buddy  //searchinh

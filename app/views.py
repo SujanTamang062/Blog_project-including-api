@@ -1,20 +1,17 @@
-from django.shortcuts import render
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate
 from .models import Profile, Category, BlogPost, Comment
 from rest_framework import status
 from app.serializers import CategorySerializers, ProfileSerializers, BlogPostSerializers, CommentSerializers, UserSerializers
 from rest_framework.viewsets import GenericViewSet, ModelViewSet
-from django.contrib.redirects.models import Redirect
 from django.contrib.auth.hashers import make_password
 from rest_framework.response import Response
-from django.contrib import messages
 from rest_framework.authtoken.models import Token
-from rest_framework.decorators import api_view,permission_classes
+from rest_framework.decorators import permission_classes
 from rest_framework.permissions import DjangoModelPermissions, IsAuthenticated
 from .permissions import OwnershipCheck
-# from rest_framework.pagination import PageNumberPagination
 
+# from rest_framework.pagination import PageNumberPagination
 # class CustomPagination(PageNumberPagination):
 #     page_size = 2
 
@@ -28,8 +25,8 @@ class home(ModelViewSet):   #here pagination/filtering/CRUD will work
     def perform_create(self,serailizer):
         serailizer.save(author = self.request.user)  #automatically assign the logged in user as the owner of the post
         
-    filterset_fields = ['created_at','category','author']
-    search_fields = ['title','category__name','author__username']
+    filterset_fields = ['created_at','category','author','id']
+    search_fields = ['title','category__name','author__username','id']
     ordering = ['-created_at']
  
     

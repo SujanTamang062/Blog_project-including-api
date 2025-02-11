@@ -3,11 +3,6 @@ from .models import  Profile, Category, Tag, BlogPost, Comment
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
 
-# class CustomUserSerializers(serializers.ModelSerializer):
-#     class Meta:   #here meata is necesssary with capitalize
-#         model = User    
-#         fields = "__all__"   #here it inputs all field of models
-        
         
 class ProfileSerializers(serializers.ModelSerializer):
     class Meta:
@@ -34,7 +29,7 @@ class CommentSerializers(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = '__all__'
-        read_only_fields = ['user']  # Make the 'user' field read-only so that it is still seen in response
+        read_only_fields = ['user']  # Make the 'user' field read-only so that it is still seen in response   #here only othe self blog can do crud operation but non-authorize user are only able to read a comment
         
         
 class UserSerializers(serializers.ModelSerializer):
@@ -51,7 +46,7 @@ class UserSerializers(serializers.ModelSerializer):
 class GroupSerializers(serializers.ModelSerializer):
     class Meta:
         model = Group
-        Fields = ['id','name']
+        fields = ['id','name']
            
 
         
